@@ -1,0 +1,40 @@
+name: server ci
+
+# Controls when the workflow will run
+on:
+
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    -
+       name: Checkout
+       uses: actions/checkout@v3
+    - 
+       name: set up Docker builtdx
+       uses: docker/setup-buildx-action@6b7dfa7e8fdbe18ad425dd965a1049d984f31cf0ad57fa6d5377cca355e65f03
+    -  
+       name: login to private registry
+       uses: docker/login-action@2bc8f761916f
+        registry: ${{ secrets.REGISTRY_URL }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    -
+       name: Built and push
+       uses: docker/built_push-action@
+       with:
+        context: .
+        file: /Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,node=max
+        builder: ${{ steps.buildx.outputs.name }}
+        push: true
+        tags: ${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_USERNAME }}/flask-server:lastest

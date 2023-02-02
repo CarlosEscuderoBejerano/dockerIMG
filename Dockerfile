@@ -4,10 +4,11 @@ WORKDIR /carlosflask
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
+RUN pip3 install gunicorn
 
 COPY . .
 
 EXPOSE 80
 
 
-ENTRYPOINT [ "python3","/entry_point.py"]
+ENTRYPOINT [ "/entry_point.sh"]
