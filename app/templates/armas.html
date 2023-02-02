@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<br>
+<table border class="centrar">
+    <tr>
+    <th>Nombre del personaje</th>
+    <th>precio</th>
+
+    </tr>
+{% for arm in arma %}
+    <tr>
+        <td>{{ arm.NombreArma }}</td>
+        <td>{{ arm.precio }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

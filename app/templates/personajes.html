@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<br>
+<table border class="centrar">
+    <tr>
+    <th>Nombre del personaje</th>
+    <th>clase</th>
+    <th>HabilidadQ</th>
+    <th>HablidadE</th>
+    <th>HablidadC</th>
+    <th>HablidadX</th> 
+    </tr>
+{% for per in personaje %}
+    <tr>
+        <td>{{ per.nombrePersonaje }}</td>
+        <td>{{ per.clase }}</td>
+        <td>{{ per.habilidadQ }}</td>
+        <td>{{ per.habilidadE }}</td>
+        <td>{{ per.habilidadC }}</td>
+        <td>{{ per.habilidadX }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

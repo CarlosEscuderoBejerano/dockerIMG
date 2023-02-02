@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<h1 class="centrar">Valorant center</h1>
+
+<h4 class="centrar">Aqui podras creer tu Usuario y poner a tu personaje mas utilizadoo y tu arma preferida</h4>
+
+<form action="/add_user" method="POST" class="centrar"> <!-- PONEMOS /USER QUE ES DONDE VAN LOS DATOS QUE METAMOS-->
+    <div class="row mb-3">
+        <div class="col">
+            <label>Nombre: </label>
+            <input type="text" name="nombre">
+        </div>
+        <label>Personaje a elegir :</label>
+
+        <select name="n_personaje">
+                {% for per in personaje %}
+                    <option  value="{{per.id}}">{{per.nombrePersonaje}}</option>
+                {% endfor %}
+        </select>
+
+        <br>
+        <label>Arma a elegir :</label>
+        <select name="n_arma">
+            {% for arm in arma %}
+                <option value="{{arm.id}}">{{arm.NombreArma}}</option>
+            {% endfor %}
+            
+            
+            </select>
+        <div class="col">
+            <button type="submit">Guardar</button>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+{% endblock %}

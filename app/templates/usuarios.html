@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<h1>Usuarios</h1>
+<table border class="centrar">
+    <tr>
+    <th>Nombre del Usuario</th>
+    <th>Personaje preferido</th>
+    <th>Arma preferida</th>
+    </tr>
+{% for usu in usuarios %}
+    <tr>
+        <td>{{ usu.nombre }}</td>
+        <td>{{ usu.personaje.nombrePersonaje }}</td>
+        <td>{{ usu.arma.NombreArma }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

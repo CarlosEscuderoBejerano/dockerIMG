@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ES"> 
+    <head>
+        {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <header>
+            <nav>
+                <ul>
+                <li><a href="{{ url_for('routes.index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('routes.personajes') }}">Personajes</a></li>
+                <li><a href="{{ url_for('routes.armas') }}">Armas</a></l>
+                <li><a href="{{ url_for('routes.usuarios') }}">Usuarios</a></li>
+             </ul>
+            </nav>
+        </header>
+        <br><br><br>
+        {% endblock %}
+        <div id="content"> {% block content %}
+            {% endblock %}</div>
+        <div id="footer" class="centrar">{% block footer %} BY Carlos escudero{% endblock %}</div>
+    </body> 
+
+
+</html>
