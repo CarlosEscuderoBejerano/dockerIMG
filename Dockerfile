@@ -17,4 +17,4 @@ RUN chmod +x entrypoint.sh
 #ENTRYPOINT [ "python3", "/app/appFlask/src/app.py"]
 CMD ["./entrypoint.sh"]
 # cmd arrancar gunicorn
-#CMD ["gunicorn"," --bind=0.0.0.0:80 app:app"]
+#CMD ["gunicorn"," --bind=0.0.0.0:80 app:app"f]
