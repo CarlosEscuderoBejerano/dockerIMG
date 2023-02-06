@@ -10,5 +10,11 @@ COPY . .
 
 EXPOSE 80
 
+WORKDIR /app
 
-ENTRYPOINT [ "/entry_point.sh"]
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+#ENTRYPOINT [ "python3", "/app/appFlask/src/app.py"]
+CMD ["./entrypoint.sh"]
+# cmd arrancar gunicorn
+#CMD ["gunicorn"," --bind=0.0.0.0:80 app:app"]
